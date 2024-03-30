@@ -9,7 +9,10 @@
 </head>
 <body>
     <h1 id="heading">FC모바일 선수 정보</h1>
-        <div style="display: flex; align-items: center;">
+    <div id="search-container">
+        <input type="text" id="search-input" placeholder="선수 검색..." onkeyup="filterTable()">
+            </div>
+    <div style="display: flex; align-items: center;">
         <div id="info" style="display: none; font-family: 'Nanum Gothic', sans-serif;"></div>
         <div id="table-container"></div>
     <script src="script.js"></script>
