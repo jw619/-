@@ -6,7 +6,7 @@ table.setAttribute('border', '1');
 
 const thead = document.createElement('thead');
 const headerRow = document.createElement('tr');
-const headers = ['선수', '시즌', '스킬 부스트', '키 (cm)', '개인기'];
+const headers = ['선수', '시즌', '스킬 부스트', '키', '개인기'];
 headers.forEach(headerText => {
     const header = document.createElement('th');
     header.textContent = headerText;
