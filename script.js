@@ -111,6 +111,7 @@ const data = [
     ['그라니트 자카', '24TOTY', '홀딩, '185', '힐투힐'],
     ['기마랑이스', '24TOTY', '특별 구성', '182', '라 크로케타']
 ];
+
 data.forEach(rowData => {
     const row = document.createElement('tr');
     rowData.forEach(cellData => {
