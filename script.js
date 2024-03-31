@@ -19,7 +19,7 @@ table.appendChild(thead);
 
 // 테이블의 본문을 생성합니다.
 const tbody = document.createElement('tbody');
-const data = {
+const data = [
     ['이사크', 'UCL24', '타이거','191','룰렛'],
     ['크라우치', '히어로', '스킬 부스트','201','개인기'],
     ['손흥민', '룰브레이커', '도미네이션','183','룰렛'],
@@ -110,7 +110,7 @@ const data = {
     ['라비오', '24TOTY', '가로채기', '191', '힐투힐'],
     ['그라니트 자카', '24TOTY', '홀딩, '185', '힐투힐'],
     ['기마랑이스', '24TOTY', '특별 구성', '182', '라 크로케타']
-};
+];
 
 data.forEach(rowData => {
     const row = document.createElement('tr');
