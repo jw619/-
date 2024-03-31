@@ -34,7 +34,7 @@ const data = [
     ['윌리암 살리바', '24TOTY', '앵커','193','레인체인지'],
     ['조 고메스', '언성히어로', '특별구성','188','힐투힐'],
     ['욘 아르넬 리세', '라이벌', '글레디에이터','185',' 힐투힐'],
-    ['음바페', 'U-TOTY', '슈퍼카','183','라 크로케타'],
+    ['킬리안 음바페', 'U-TOTY', '슈퍼카','183','라 크로케타'],
     ['카림 벤제마', 'FC24', '결정력','185','룰렛'],
     ['르베르 피레스', 'NYI', '아키텍트','187','룰렛'],
     ['자이르지뉴', 'NYI', '세컨드 스트라이커','173','레인보우'],
@@ -104,7 +104,13 @@ const data = [
     ['뎀벨레', '24TOTY', '페이스', '178', '녹 온 드리블'],
     ['마레즈', '24TOTY', '어택미드', '179', '룰렛'],
     ['라비오', '24TOTY', '가로채기', '191', '힐투힐'],
-    //['그라니트 자카', '24TOTY', '홀딩, '185', '힐투힐'],
+    ['그라니트 자카', '24TOTY', '홀딩', '185', '힐투힐'],
+    ['셰우첸코', 'IF','세컨드 스트라이커', '183','라 크로케타'],
+    ['아우나르트 단주마','FC24','세컨드 스트라이커', '178','라 크로케타'],
+    ['하파엘 레앙', 'UCL24','나이프', '188','룰렛'],
+    ['크리스티아누 호날두', '피어리스','파워풀', '187','스쿱턴'],
+    ['킬리안 음바페', 'FC24','세컨드 스트라이커', '183','녹 온 드리블'],
+    ['벨링엄', 'FC24','미드엔진', '186','룰렛'],
 ];
 
 data.forEach(rowData => {
@@ -140,3 +146,49 @@ function filterTable() {
         row.style.display = matchesSearchTerm ? "" : "none"; // 일치하면 표시, 아니면 숨깁니다.
     });
 }
+// 페이지당 표시할 데이터 수
+const rowsPerPage = 10;
+
+// 현재 페이지 번호
+let currentPage = 1;
+
+function displayPage(page) {
+    // 시작 인덱스
+    const start = (page - 1) * rowsPerPage;
+    // 종료 인덱스
+    const end = page * rowsPerPage;
+    // 현재 페이지의 데이터 추출
+    const paginatedItems = data.slice(start, end);
+
+    // 테이블 본문 클리어
+    tbody.innerHTML = '';
+
+    // 현재 페이지 데이터로 테이블 본문 채우기
+    paginatedItems.forEach(item => {
+        const row = tbody.insertRow();
+        item.forEach(text => {
+            const cell = row.insertCell();
+            cell.textContent = text;
+        });
+    });
+
+    // 페이지네이션 버튼 업데이트
+    setupPagination(data.length, page);
+}
+
+function setupPagination(totalItems, currentPage) {
+    const pageCount = Math.ceil(totalItems / rowsPerPage);
+    const paginationContainer = document.getElementById('pagination');
+    paginationContainer.innerHTML = ''; // 기존 페이지네이션 버튼 제거
+
+    for (let i = 1; i <= pageCount; i++) {
+        const btn = document.createElement('button');
+        btn.textContent = i;
+        if (i === currentPage) btn.classList.add('active');
+        btn.addEventListener('click', () => displayPage(i));
+        paginationContainer.appendChild(btn);
+    }
+}
+
+// 초기 페이지 로딩
+displayPage(currentPage);
