@@ -147,7 +147,7 @@ function filterTable() {
     });
 }
 // 페이지당 표시할 데이터 수
-const rowsPerPage = 10;
+const rowsPerPage = 15;
 
 // 현재 페이지 번호
 let currentPage = 1;
